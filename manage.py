@@ -7,8 +7,6 @@ import sys
 def main():
     """Run administrative tasks."""
     # 根据环境变量选择 settings 模块
-    print(os.getenv(
-        'ENV'))
     settings_module = 'luffycityapi.luffycityapi.settings.dev' if os.getenv(
         'ENV') == 'local' else 'luffycityapi.luffycityapi.settings.prod'
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', settings_module)
