@@ -11,9 +11,12 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import sys
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+sys.path.insert(0, str(BASE_DIR / "apps"))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -36,14 +39,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'luffycityapi.luffycityapi.apps.home',
 ]
+
+EXCEPTION_HANDLER_MODULE = str(BASE_DIR / "utils")
 
 REST_FRAMEWORK = {
     # 自定义异常处理
-    'EXCEPTION_HANDLER': 'luffycityapi.utils.exceptions.custom_exception_handler',
+    'EXCEPTION_HANDLER': 'luffycityapi.luffycityapi.utils.exceptions.custom_exception_handler',
 
 }
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -54,7 +59,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
 
 ROOT_URLCONF = 'luffycityapi.luffycityapi.urls'
 
@@ -93,10 +97,10 @@ DATABASES = {
         'USER': 'luffycity_user',
         'PASSWORD': 'luffycity',
         'OPTIONS': {
-            'charset': 'utf8mb4', # 连接选项配置,mysql8.0以上无需配置
+            'charset': 'utf8mb4',  # 连接选项配置,mysql8.0以上无需配置
         },
-        'POOL_OPTIONS' : {      # 连接池的配置信息
-            'POOL_SIZE': 10,    # 连接池默认创建的链接对象的数量
+        'POOL_OPTIONS': {  # 连接池的配置信息
+            'POOL_SIZE': 10,  # 连接池默认创建的链接对象的数量
             'MAX_OVERFLOW': 10  # 连接池默认创建的链接对象的最大数量
         }
     }
@@ -201,8 +205,6 @@ LOGGING = {
     }
 }
 
-
-
 # 设置redis缓存
 CACHES = {
     # 默认缓存
@@ -211,7 +213,7 @@ CACHES = {
         # 项目上线时,需要调整这里的路径
         # "LOCATION": "redis://:密码@IP地址:端口/库编号",
         # 本地没有设置账户和密码
-        # "LOCATION": "redis://:123456@127.0.0.1:6379/0",
+        "LOCATION": "redis://127.0.0.1:6379/0",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
             "CONNECTION_POOL_KWARGS": {"max_connections": 100},
@@ -220,16 +222,16 @@ CACHES = {
     # 提供给admin运营站点的session存储
     "session": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://:123456@127.0.0.1:6379/1",
+        "LOCATION": "redis://127.0.0.1:6379/1",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
             "CONNECTION_POOL_KWARGS": {"max_connections": 100},
         }
     },
     # 提供存储短信验证码
-    "sms_code":{
+    "sms_code": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://:123456@127.0.0.1:6379/2",
+        "LOCATION": "redis://127.0.0.1:6379/2",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
             "CONNECTION_POOL_KWARGS": {"max_connections": 100},
