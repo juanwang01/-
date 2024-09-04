@@ -3,9 +3,16 @@
 import os
 import sys
 
+
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'luffycityapi.luffycityapi.settings.dev')
+    # 根据环境变量选择 settings 模块
+    print(os.getenv(
+        'ENV'))
+    settings_module = 'luffycityapi.luffycityapi.settings.dev' if os.getenv(
+        'ENV') == 'local' else 'luffycityapi.luffycityapi.settings.prod'
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', settings_module)
+
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
