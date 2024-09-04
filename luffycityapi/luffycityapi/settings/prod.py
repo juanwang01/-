@@ -24,7 +24,8 @@ SECRET_KEY = 'django-insecure-flb-z=ni!&t84%(5q442v&m32qudx^^=0oaxd3m-rbnq@jz0d0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+"可访问的ip"
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
