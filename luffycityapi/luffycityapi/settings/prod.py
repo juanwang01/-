@@ -90,7 +90,7 @@ DATABASES = {
         'PORT': 3306,
         'HOST': '127.0.0.1',
         'USER': 'luffycity_user',
-        'PASSWORD': 'lLuffycity!1',
+        'PASSWORD': 'Luffycity!1',
         'OPTIONS': {
             'charset': 'utf8mb4', # 连接选项配置,mysql8.0以上无需配置
         },
