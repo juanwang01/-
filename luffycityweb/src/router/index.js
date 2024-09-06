@@ -9,7 +9,7 @@ const routes = [
     },
     path: '/',         // uri访问地址
     name: "HomePage",
-    component: ()=> import("../views/home.vue")
+    component: ()=> import("../views/HomePage.vue")
   },
   {
     meta:{
@@ -18,7 +18,7 @@ const routes = [
     },
     path:'/login',      // uri访问地址
     name: "LoginPage",
-    component: ()=> import("../views/login.vue")
+    component: ()=> import("../views/LoginPage.vue")
   }
 ]
 
