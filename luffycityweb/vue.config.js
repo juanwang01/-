@@ -3,7 +3,7 @@ module.exports = defineConfig({
     transpileDependencies: true,
     devServer: { // 将 server 改为 devServer
         port: '8080',           // 客户端的运行端口
-        host: '127.0.0.1',      // 客户端的运行地址
+        host: '0.0.0.0',      // 客户端的运行地址
         proxy: {
             '/api': {
                 // 凡是遇到 /api 路径的请求，都映射到 target 属性
