@@ -8,8 +8,8 @@ const routes = [
         keepAlive: true
     },
     path: '/',         // uri访问地址
-    name: "Home",
-    component: ()=> import("../views/Home.vue")
+    name: "HomePage",
+    component: ()=> import("../views/home.vue")
   },
   {
     meta:{
@@ -17,8 +17,8 @@ const routes = [
         keepAlive: true
     },
     path:'/login',      // uri访问地址
-    name: "Login",
-    component: ()=> import("../views/Login.vue")
+    name: "LoginPage",
+    component: ()=> import("../views/login.vue")
   }
 ]
 
