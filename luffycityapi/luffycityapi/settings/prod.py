@@ -11,10 +11,12 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import sys
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+sys.path.insert(0, str(BASE_DIR / "apps"))
+sys.path.insert(0, str(BASE_DIR / "utils"))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -46,7 +48,6 @@ REST_FRAMEWORK = {
 
 }
 
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -56,7 +57,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
 
 ROOT_URLCONF = 'luffycityapi.luffycityapi.urls'
 
@@ -95,10 +95,10 @@ DATABASES = {
         'USER': 'luffycity_user',
         'PASSWORD': 'Luffycity!1',
         'OPTIONS': {
-            'charset': 'utf8mb4', # 连接选项配置,mysql8.0以上无需配置
+            'charset': 'utf8mb4',  # 连接选项配置,mysql8.0以上无需配置
         },
-        'POOL_OPTIONS' : {      # 连接池的配置信息
-            'POOL_SIZE': 10,    # 连接池默认创建的链接对象的数量
+        'POOL_OPTIONS': {  # 连接池的配置信息
+            'POOL_SIZE': 10,  # 连接池默认创建的链接对象的数量
             'MAX_OVERFLOW': 10  # 连接池默认创建的链接对象的最大数量
         }
     }
@@ -202,8 +202,6 @@ LOGGING = {
         },
     }
 }
-
-
 
 # 设置redis缓存
 CACHES = {
