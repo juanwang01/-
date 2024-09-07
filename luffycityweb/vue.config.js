@@ -7,7 +7,7 @@ module.exports = defineConfig({
         proxy: {
             '/api': {
                 // 凡是遇到 /api 路径的请求，都映射到 target 属性
-                target: 'http://localhost:8000/',  // 注意：需要加上 http://
+                target: process.env.VUE_APP_BASE_API || "http://localhost:8000",  // 注意：需要加上 http://
                 changeOrigin: true,
                 ws: true,    // 是否支持 websocket 跨域
                 pathRewrite: {'^/api': ''}  // 重写路径
