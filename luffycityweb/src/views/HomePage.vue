@@ -1,15 +1,18 @@
 <template>
   <div class="home">
-    <Header></Header>
+    <HeaderPage></HeaderPage>
 
-    <Footer></Footer>
+
+    <FooterPage></FooterPage>
+
   </div>
+
 </template>
 
 <script setup>
 // vite中导入非ts.js文件时，必须填写文件后缀
-import Header from "../components/HeaderPage.vue"
-import Footer from "../components/FooterPage.vue"
+import HeaderPage from "@/components/HeaderPage.vue";
+import FooterPage from "@/components/FooterPage.vue";
 
 // 测试CORS的跨域配置是否有问题
 // import http from "../utils/http";
@@ -26,5 +29,10 @@ import Footer from "../components/FooterPage.vue"
 </script>
 
 <style scoped>
+
+.inline {
+  display: inline-block;
+  vertical-align: top; /* 如果需要保持顶部对齐 */
+}
 
 </style>

@@ -3,7 +3,7 @@
     <div class="header">
       <div class="content">
         <div class="logo">
-          <!--            点击图片返回主页-->
+          <!-- 点击图片返回主页 -->
           <router-link to="/"><img src="../assets/logo.svg" alt=""></router-link>
         </div>
         <ul class="nav">
@@ -49,3 +49,25 @@ nav.get_header_nav().then(response=>{
 
 
 </script>
+
+<style>
+.header-box .nav {
+  display: flex; /* 使用 flexbox 布局，使子元素横向排列 */
+  list-style-type: none; /* 去除列表的默认样式 */
+  padding: 0;
+  margin: 0;
+}
+
+.header-box .nav li {
+  margin-right: 20px; /* 设置每个导航项之间的间距 */
+}
+
+.header-box .nav li:last-child {
+  margin-right: 0; /* 最后一个元素不需要右边距 */
+}
+
+.header-box a, .header-box router-link {
+  text-decoration: none; /* 去掉链接的下划线 */
+  color: inherit; /* 继承字体颜色 */
+}
+</style>
