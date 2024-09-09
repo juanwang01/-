@@ -1,4 +1,7 @@
 const {defineConfig} = require('@vue/cli-service')
+
+console.log('Base API URL:', process.env.VUE_APP_BASE_API);  // 输出环境变量
+
 module.exports = defineConfig({
     transpileDependencies: true,
     devServer: { // 将 server 改为 devServer
