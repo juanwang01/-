@@ -16,8 +16,9 @@ import sys
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+
 sys.path.insert(0, str(BASE_DIR / "apps"))
-sys.path.insert(0, str( BASE_DIR / "utils") )
+sys.path.insert(0, str(BASE_DIR / "utils"))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -250,3 +251,16 @@ CACHES = {
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 # 设置session保存的位置对应的缓存配置项
 SESSION_CACHE_ALIAS = "session"
+
+# 访问静态文件的url地址前缀
+STATIC_URL = '/static/'
+# 设置django的静态文件目录[手动创建]
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
+
+# 项目中存储上传文件的根目录[手动创建]，注意，uploads目录需要手动创建否则上传文件时报错
+MEDIA_ROOT = BASE_DIR / "uploads"
+# 访问上传文件的url地址前缀
+MEDIA_URL = "/uploads/"
