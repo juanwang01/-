@@ -22,3 +22,16 @@ class Nav(BaseModel):
         db_table = "fg_nav"
         verbose_name = "导航菜单"
         verbose_name_plural = verbose_name
+
+
+class Banner(BaseModel):
+    # 产生上传路径的关键upload_to="banner/%Y/"，加上配置就会拼接为/uploads/banner/2022/4.jpg，路由返回完整静态资源路径
+    image = models.ImageField(upload_to="banner/%Y/", verbose_name="图片地址")
+    link = models.CharField(max_length=500, verbose_name="链接地址")
+    note = models.CharField(max_length=150, verbose_name='备注信息')
+    is_http = models.BooleanField(default=False, verbose_name="是否外链地址", help_text="站点链接地址：http://www.baidu.com/book<br>站点链接地址：/book/")
+
+    class Meta:
+        db_table = "fg_banner"
+        verbose_name = "轮播广告"
+        verbose_name_plural = verbose_name

@@ -1,8 +1,7 @@
 <template>
   <div class="home">
     <HeaderPage></HeaderPage>
-
-
+    <BannerPage></BannerPage>
     <FooterPage></FooterPage>
 
   </div>
@@ -13,6 +12,7 @@
 // vite中导入非ts.js文件时，必须填写文件后缀
 import HeaderPage from "@/components/HeaderPage.vue";
 import FooterPage from "@/components/FooterPage.vue";
+import BannerPage from "@/components/BannerPage.vue";
 
 // 测试CORS的跨域配置是否有问题
 // import http from "../utils/http";
