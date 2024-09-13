@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'corsheaders',
 
     'luffycityapi.luffycityapi.apps.home',
+    'luffycityapi.luffycityapi.apps.users',
 ]
 
 REST_FRAMEWORK = {
@@ -249,7 +250,6 @@ SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 # 设置session保存的位置对应的缓存配置项
 SESSION_CACHE_ALIAS = "session"
 
-
 # 访问静态文件的url地址前缀
 STATIC_URL = '/static/'
 # 设置django的静态文件目录[手动创建]
@@ -257,8 +257,10 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-
 # 项目中存储上传文件的根目录[手动创建]，注意，uploads目录需要手动创建否则上传文件时报错
 MEDIA_ROOT = BASE_DIR / "uploads"
 # 访问上传文件的url地址前缀
 MEDIA_URL = "/uploads/"
+
+# 认证模型
+AUTH_USER_MODEL = 'users.User'

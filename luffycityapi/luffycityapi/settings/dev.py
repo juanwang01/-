@@ -16,7 +16,6 @@ import sys
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 sys.path.insert(0, str(BASE_DIR / "apps"))
 sys.path.insert(0, str(BASE_DIR / "utils"))
 # Quick-start development settings - unsuitable for production
@@ -44,6 +43,7 @@ INSTALLED_APPS = [
     'corsheaders',
 
     'luffycityapi.luffycityapi.apps.home',
+    'luffycityapi.luffycityapi.apps.users',
 ]
 
 EXCEPTION_HANDLER_MODULE = str(BASE_DIR / "utils")
@@ -259,8 +259,10 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-
 # 项目中存储上传文件的根目录[手动创建]，注意，uploads目录需要手动创建否则上传文件时报错
 MEDIA_ROOT = BASE_DIR / "uploads"
 # 访问上传文件的url地址前缀
 MEDIA_URL = "/uploads/"
+
+# 认证模型,这是app名称和模型名称
+AUTH_USER_MODEL = 'users.User'
