@@ -43,8 +43,25 @@ const loginhandler = ()=>{
 
   // 登录请求处理
   user.login().then(response=>{
+    // 保存token，并根据用户的选择，是否记住密码
+    localStorage.removeItem("token");
+    sessionStorage.removeItem("token");
+    console.log(response.data.token);
+    if(user.remember){ // 判断是否记住登录状态
+      // 记住登录
+      localStorage.token = response.data.token
+    }else{
+      // 不记住登录，关闭浏览器以后就删除状态
+      sessionStorage.token = response.data.token;
+    }
+    // 保存token，并根据用户的选择，是否记住密码
+    // 成功提示
+    ElMessage.success("登录成功！");
+    console.log("登录成功！");
+    // 关闭登录弹窗
     console.log(response.data);
     ElMessage.success("登录成功！");
+
     // eslint-disable-next-line no-unused-vars
   }).catch(error=>{
     ElMessage.error("登录失败！");
@@ -52,3 +69,113 @@ const loginhandler = ()=>{
 }
 
 </script>
+
+<style scoped>
+.title{
+    font-size: 20px;
+    color: #9b9b9b;
+    letter-spacing: .32px;
+    border-bottom: 1px solid #e6e6e6;
+    display: flex;
+    justify-content: space-around;
+    padding: 0px 60px 0 60px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+.title span.active{
+	color: #4a4a4a;
+    border-bottom: 2px solid #84cc39;
+}
+
+.inp{
+	width: 350px;
+	margin: 0 auto;
+}
+.inp .code{
+    width: 220px;
+    margin-right: 16px;
+}
+#get_code{
+   margin-top: 6px;
+}
+.inp input{
+    outline: 0;
+    width: 100%;
+    height: 45px;
+    border-radius: 4px;
+    border: 1px solid #d9d9d9;
+    text-indent: 20px;
+    font-size: 14px;
+    background: #fff !important;
+}
+.inp input.user{
+    margin-bottom: 16px;
+}
+.inp .rember{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin-top: 10px;
+}
+.inp .rember p:first-of-type{
+    font-size: 12px;
+    color: #4a4a4a;
+    letter-spacing: .19px;
+    margin-left: 22px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    /*position: relative;*/
+}
+.inp .rember p:nth-of-type(2){
+    font-size: 14px;
+    color: #9b9b9b;
+    letter-spacing: .19px;
+    cursor: pointer;
+}
+
+.inp .rember input{
+    outline: 0;
+    width: 30px;
+    height: 45px;
+    border-radius: 4px;
+    border: 1px solid #d9d9d9;
+    text-indent: 20px;
+    font-size: 14px;
+    background: #fff !important;
+    vertical-align: middle;
+    margin-right: 4px;
+}
+
+.inp .rember p span{
+    display: inline-block;
+    font-size: 12px;
+    width: 100px;
+}
+.login_btn{
+    cursor: pointer;
+    width: 100%;
+    height: 45px;
+    background: #84cc39;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #fff;
+    letter-spacing: .26px;
+    margin-top: 30px;
+    border: none;
+    outline: none;
+}
+.inp .go_login{
+    text-align: center;
+    font-size: 14px;
+    color: #9b9b9b;
+    letter-spacing: .26px;
+    padding-top: 20px;
+}
+.inp .go_login span{
+    color: #84cc39;
+    cursor: pointer;
+}
+</style>

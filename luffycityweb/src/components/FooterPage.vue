@@ -20,23 +20,32 @@ nav.get_footer_nav().then(response=>{
 
 </script>
 
-<style>
-.footer-nav {
-  display: flex; /* 使用 flexbox 布局 */
-  list-style-type: none; /* 去掉默认的列表样式 */
-  padding: 0; /* 去掉默认的内边距 */
-  margin: 0; /* 去掉默认的外边距 */
-}
 
-.footer-nav li {
-  margin-right: 20px; /* 设置每个列表项的间距 */
+<style scoped>
+.footer {
+  width: 100%;
+  height: 128px;
+  color: #545C63;
 }
-
-.footer-nav li:last-child {
-  margin-right: 0; /* 最后一个列表项不需要右边距 */
+.footer ul{
+  margin: 0 auto 16px;
+  padding-top: 38px;
+  width: 930px;
 }
-
-.footer a, .footer router-link {
-  text-decoration: none; /* 去掉链接的下划线 */
+.footer ul li{
+  float: left;
+  width: 112px;
+  margin: 0 10px;
+  text-align: center;
+  font-size: 14px;
+}
+.footer ul::after{
+  content:"";
+  display:block;
+  clear:both;
+}
+.footer p{
+  text-align: center;
+  font-size: 12px;
 }
 </style>

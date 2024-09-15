@@ -30,9 +30,4 @@ import BannerPage from "@/components/BannerPage.vue";
 
 <style scoped>
 
-.inline {
-  display: inline-block;
-  vertical-align: top; /* 如果需要保持顶部对齐 */
-}
-
 </style>
