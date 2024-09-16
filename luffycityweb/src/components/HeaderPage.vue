@@ -47,6 +47,10 @@ import {reactive} from "vue";
 import nav from "../api/nav";
 import {provide} from "vue";
 
+import {useStore} from "vuex"
+// eslint-disable-next-line no-unused-vars
+const store = useStore()
+
 const state = reactive({
   show_login: false,
 });

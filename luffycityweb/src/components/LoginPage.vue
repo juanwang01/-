@@ -31,6 +31,9 @@ import user from "../api/user";
 import {ElMessage} from 'element-plus'
 import {inject} from "vue";
 
+import {useStore} from "vuex"
+const store = useStore()
+
 const login_success = inject('login_success')
 
 // 登录处理
@@ -58,7 +61,7 @@ const loginhandler = () => {
     }
     // 保存token，并根据用户的选择，是否记住密码
     // 成功提示
-    console.log(response.data);
+    // console.log("打印数据：",response.data.access.split(".")[1]);
     ElMessage.success("登录成功！");
     // 关闭登录弹窗
 
@@ -72,6 +75,12 @@ const loginhandler = () => {
     // 关闭登录弹窗，对外发送一个登录成功的信息
     login_success(response.data.token)
 
+    let payload = response.data.access.split(".")[1]
+
+    let payload_data = JSON.parse(atob(payload))
+    console.log("解码的数据：",payload_data)
+    // 存储数据，客户端存储用户数据(所以说就需要自定义这个payload_data了)
+    store.commit("login", payload_data)
 
 
     // eslint-disable-next-line no-unused-vars
