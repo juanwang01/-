@@ -4,7 +4,7 @@
     <span :class="{active:user.login_type==1}" @click="user.login_type=1">短信登录</span>
   </div>
   <div class="inp" v-if="user.login_type==0">
-    <input v-model="user.account" type="text" placeholder="用户名 / 手机号码" class="user">
+    <input v-model="user.account" type="text" placeholder="用户名 / 手机号码 / 邮箱" class="user">
     <input v-model="user.password" type="password" class="pwd" placeholder="密码">
     <div id="geetest1"></div>
     <div class="rember">
