@@ -45,10 +45,11 @@
 import Login from "./LoginPage.vue"
 import {reactive} from "vue";
 import nav from "../api/nav";
+import {provide} from "vue";
 
 const state = reactive({
   show_login: false,
-})
+});
 
 // 获取头部导航
 nav.get_header_nav().then(response => {
@@ -56,6 +57,15 @@ nav.get_header_nav().then(response => {
 }).catch(error => {
   console.log(error);
 });
+
+// 用户登录成功以后的处理
+// eslint-disable-next-line no-unused-vars
+const login_success = (token)=>{
+  console.log('33333')
+  state.show_login = false
+}
+
+provide('login_success',login_success)
 
 </script>
 
