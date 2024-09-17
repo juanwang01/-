@@ -81,6 +81,8 @@ const loginhandler = () => {
     console.log("解码的数据：",payload_data)
     // 存储数据，客户端存储用户数据(所以说就需要自定义这个payload_data了)
     store.commit("login", payload_data)
+    // 查看用户信息是否被保存
+    console.log('用户信息是否被保存：',store.getters.getUserInfo)
 
 
     // eslint-disable-next-line no-unused-vars

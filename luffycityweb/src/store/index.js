@@ -2,7 +2,7 @@ import {createStore} from "vuex"
 import createPersistedState from "vuex-persistedstate"
 
 // 实例化一个vuex存储库
-export default createStore({
+const store = createStore({
     // 调用永久存储vuex数据的插件，localstorage里会多一个名叫vuex的Key，里面就是vuex的数据
     plugins: [createPersistedState()],
 
@@ -15,7 +15,10 @@ export default createStore({
     getters: {
         getUserInfo(state) {
             // 从jwt的载荷中提取用户信息
+            console.log('内部打印信息:', state.user)
             let now = parseInt((new Date() - 0) / 1000);
+            console.log('当前时间：', now)
+            console.log('有效期：', state.user.exp)
             if (state.user.exp === undefined) {
                 // 没登录
                 state.user = {}
@@ -39,7 +42,16 @@ export default createStore({
         // user是传递的参数
         login(state, user) {  // state 就是上面的state   state.user 就是上面的数据
             state.user = user
-        }
+        },
+
+        logout(state) { // 退出登录调用函数
+            state.user = {}
+            localStorage.token = null;
+            sessionStorage.token = null;
+        },
+
+
     }
 })
 
+export default store;
