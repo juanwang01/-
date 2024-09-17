@@ -27,10 +27,13 @@
             <img src="../assets/cart.svg" alt=""/>
             <span><router-link to="/cart">购物车</router-link></span>
           </div>
-          <div class="login-box full-left">
+          <div class="login-box full-left" >
             <span @click="state.show_login=true">登录</span>
             &nbsp;/&nbsp;
             <span>注册</span>
+          </div>
+          <div class="login-box full-left"  @click="logout" >
+            注销
           </div>
         </div>
       </div>
@@ -67,6 +70,10 @@ nav.get_header_nav().then(response => {
 const login_success = (token)=>{
   console.log('33333')
   state.show_login = false
+}
+
+const logout = ()=>{
+  store.commit('logout')
 }
 
 provide('login_success',login_success)
